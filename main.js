@@ -303,9 +303,10 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-function validateCurrentStep() {
-    const currentStepElement = document.getElementById(`step${currentStepIndex}`);
-    const requiredFields = currentStepElement.querySelectorAll('input[required], select[required]');
+// Form validation for single-step form
+function validateForm() {
+    const form = document.getElementById('registrationForm');
+    const requiredFields = form.querySelectorAll('input[required], select[required]');
     
     let isValid = true;
     requiredFields.forEach(field => {
@@ -315,80 +316,6 @@ function validateCurrentStep() {
     });
     
     return isValid;
-}
-
-function nextStep() {
-    if (!validateCurrentStep()) {
-        showNotification('⚠️ Please complete all required fields', 'error');
-        return;
-    }
-    
-    if (currentStepIndex < totalSteps) {
-        // Hide current step
-        document.getElementById(`step${currentStepIndex}`).classList.remove('active');
-        
-        // Show next step
-        currentStepIndex++;
-        document.getElementById(`step${currentStepIndex}`).classList.add('active');
-        
-        // Update progress
-        updateProgress();
-        
-        // Animate step transition
-        anime({
-            targets: `#step${currentStepIndex}`,
-            translateX: [50, 0],
-            opacity: [0, 1],
-            easing: 'easeOutExpo',
-            duration: 500
-        });
-        
-        // Trigger conversion events
-        if (currentStepIndex === 2) {
-            showNotification('🎯 Great! Now let\'s get your professional details', 'info');
-        } else if (currentStepIndex === 3) {
-            showNotification('🧠 Almost done! Tell us about your AI experience', 'info');
-        } else if (currentStepIndex === 4) {
-            completeRegistration();
-        }
-    }
-}
-
-function prevStep() {
-    if (currentStepIndex > 1) {
-        // Hide current step
-        document.getElementById(`step${currentStepIndex}`).classList.remove('active');
-        
-        // Show previous step
-        currentStepIndex--;
-        document.getElementById(`step${currentStepIndex}`).classList.add('active');
-        
-        // Update progress
-        updateProgress();
-        
-        // Animate step transition
-        anime({
-            targets: `#step${currentStepIndex}`,
-            translateX: [-50, 0],
-            opacity: [0, 1],
-            easing: 'easeOutExpo',
-            duration: 500
-        });
-    }
-}
-
-function updateProgress() {
-    const progressPercent = (currentStepIndex / totalSteps) * 100;
-    
-    document.getElementById('currentStep').textContent = currentStepIndex;
-    document.getElementById('progressPercent').textContent = `${Math.round(progressPercent)}%`;
-    
-    anime({
-        targets: '#progressBar',
-        width: `${progressPercent}%`,
-        easing: 'easeOutExpo',
-        duration: 500
-    });
 }
 
 function completeRegistration() {
@@ -723,11 +650,20 @@ function showMoreTestimonials() {
 // Form submission handler with conversion tracking
 document.addEventListener('submit', function(e) {
     if (e.target.id === 'registrationForm') {
-        e.preventDefault();
-        
-        if (validateCurrentStep()) {
-            nextStep();
+        // Validate form before submission
+        if (!validateForm()) {
+            e.preventDefault();
+            showNotification('⚠️ Please complete all required fields', 'error');
+            return;
         }
+        
+        // Allow the form to submit normally to MailingBoss
+        showNotification('🚀 Submitting your registration...', 'info');
+        
+        // Track the submission
+        setTimeout(() => {
+            showNotification('✅ Registration submitted successfully! Check your email for confirmation.', 'success');
+        }, 1000);
     }
 });
 
