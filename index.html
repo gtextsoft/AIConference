@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Conference London 2025 | FREE Access (Limited Time)</title>
+    <meta name="description" content="Join 500+ global leaders at London's most exclusive AI conference. FREE tickets available for a limited time. Register now before they're gone!">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="AI Conference London 2025 - FREE Access (Limited Time)">
+    <meta property="og:description" content="Join 500+ global leaders at London's most exclusive AI conference. FREE tickets available for a limited time.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aiconferenceworldwide.com">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/splitting@1.0.6/dist/splitting.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.2.4/pixi.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-dark: #0a0a0a;
+            --primary-light: #ffffff;
+            --accent-gold: #d4af37;
+            --accent-gold-light: #f4d03f;
+            --text-gray: #9ca3af;
+            --urgency-red: #ef4444;
+            --success-green: #10b981;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--primary-light);
+            overflow-x: hidden;
+        }
+        
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-bg {
+            background: radial-gradient(ellipse at center, #1a1a1a 0%, #000000 70%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .liquid-metal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .urgency-text {
+            color: var(--urgency-red);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-light) 100%);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+        }
+        
+        .btn-urgent {
+            background: linear-gradient(135deg, var(--urgency-red) 0%, #dc2626 100%);
+            animation: pulse 2s infinite;
+        }
+        
+        .countdown-digit {
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid var(--accent-gold);
+            position: relative;
+        }
+        
+        .countdown-digit::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .form-step {
+            display: none;
+        }
+        
+        .form-step.active {
+            display: block;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, var(--accent-gold) 0%, var(--accent-gold-light) 100%);
+        }
+        
+        .speaker-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent-gold);
+        }
+        
+        .social-proof-banner {
+            background: linear-gradient(90deg, var(--success-green), #059669);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .social-proof-banner.show {
+            transform: translateY(0);
+        }
+        
+        .exit-intent-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .exit-intent-modal.show {
+            display: flex;
+        }
+        
+        .urgency-indicator {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--urgency-red);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            animation: bounce 1s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .floating-element {
+            position: absolute;
+            color: var(--accent-gold);
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .notification-badge {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background: var(--success-green);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            z-index: 1000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+        
+        .notification-badge.show {
+            transform: translateX(0);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+                line-height: 1.1;
+            }
+            
+            .countdown-digit {
+                padding: 8px;
+            }
+            
+            .countdown-digit .text-2xl {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Social Proof Banner -->
+    <div class="social-proof-banner" id="socialProofBanner">
+        <div class="container mx-auto px-4 py-2 text-center text-white text-sm">
+            <span id="socialProofText">🎉 Sarah from London just registered! Only 47 seats remaining</span>
+        </div>
+    </div>
+
+    <!-- Notification Badge -->
+    <div class="notification-badge" id="notificationBadge">
+        🎊 New registration from Manchester!
+    </div>
+
+    <!-- Exit Intent Modal -->
+    <div class="exit-intent-modal" id="exitIntentModal">
+        <div class="bg-gray-900 rounded-lg p-8 max-w-md mx-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">Wait! Don't Miss Out!</h3>
+            <p class="text-gray-300 mb-6">Join 500+ global leaders at London's most exclusive AI conference. Free tickets are disappearing fast!</p>
+            <div class="mb-6">
+                <div class="text-3xl font-bold urgency-text mb-2">Only 47 Seats Left!</div>
+                <div class="text-sm text-gray-400">Claim your free ticket now</div>
+            </div>
+            <button onclick="closeExitModal(); scrollToRegistration();" class="btn-primary text-black px-8 py-3 rounded-lg font-semibold w-full">
+                Get My Free Ticket Now
+            </button>
+            <button onclick="closeExitModal()" class="text-gray-400 mt-4 text-sm">No thanks, I'll miss out</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center relative">
+        <canvas id="liquidMetal" class="liquid-metal"></canvas>
+        
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-element text-6xl" style="top: 10%; left: 10%; animation-delay: 0s;">🧠</div>
+            <div class="floating-element text-4xl" style="top: 20%; right: 15%; animation-delay: 1s;">⚡</div>
+            <div class="floating-element text-5xl" style="bottom: 20%; left: 20%; animation-delay: 2s;">🚀</div>
+            <div class="floating-element text-3xl" style="top: 40%; right: 25%; animation-delay: 3s;">💡</div>
+            <div class="floating-element text-4xl" style="bottom: 30%; right: 10%; animation-delay: 4s;">🎯</div>
+        </div>
+        
+        <div class="hero-content container mx-auto px-4 text-center">
+            <div class="max-w-4xl mx-auto">
+                <!-- Urgency Banner -->
+                <div class="bg-red-600 text-white px-4 py-2 rounded-full inline-block mb-6 text-sm font-semibold">
+                    ⚡ FLASH SALE: FREE Tickets Available for 24 Hours Only!
+                </div>
+                
+                <h1 class="hero-title font-display font-black text-4xl md:text-6xl mb-6 leading-tight" data-splitting>
+                    AI CONFERENCE <span class="gradient-text">LONDON 2025</span>: Where Global Leaders Converge to Master AI
+                </h1>
+                
+                <p class="text-xl md:text-2xl mb-6 text-gray-300 font-light">
+                    Join This Exclusive Free Conference on October 25th & Gain the Strategic Blueprint to Transform Your Business and Accelerate Your Career in the AI Era
+                </p>
+                
+                <!-- Social Proof Counter -->
+                <div class="mb-8">
+                    <div class="bg-green-600 text-white px-6 py-3 rounded-full inline-block mb-4">
+                        🔥 <span id="attendeeCounter">487</span> Leaders Already Registered
+                    </div>
+                </div>
+                
+                <div class="mb-10">
+                    <p class="text-lg mb-6 text-gray-400">October 25th, 2025 • London</p>
+                    <div class="flex justify-center space-x-4 mb-8">
+                        <div class="countdown-digit rounded-lg p-4 text-center relative">
+                            <div class="urgency-indicator">!</div>
+                            <div class="text-2xl font-bold" id="days">00</div>
+                            <div class="text-sm text-gray-400">Days</div>
+                        </div>
+                        <div class="countdown-digit rounded-lg p-4 text-center relative">
+                            <div class="urgency-indicator">!</div>
+                            <div class="text-2xl font-bold" id="hours">00</div>
+                            <div class="text-sm text-gray-400">Hours</div>
+                        </div>
+                        <div class="countdown-digit rounded-lg p-4 text-center relative">
+                            <div class="urgency-indicator">!</div>
+                            <div class="text-2xl font-bold" id="minutes">00</div>
+                            <div class="text-sm text-gray-400">Minutes</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <p class="text-lg mb-6 max-w-3xl mx-auto text-gray-300">
+                        Move beyond the hype and into a realm of strategic clarity. This premier conference is where top-tier executives and innovators convene to crystallize their vision for AI, gaining the foresight and connections needed to secure a lasting competitive edge.
+                    </p>
+                </div>
+                
+                <!-- Multiple CTA Options -->
+                <div class="space-y-4 mb-8">
+                    <button onclick="scrollToRegistration()" class="btn-primary text-black px-10 py-5 rounded-full text-xl font-bold hover:scale-105 transition-all duration-300 block mx-auto">
+                        🚀 Claim My FREE Ticket Now
+                    </button>
+                    
+                    <div class="text-sm text-gray-400">
+                        <span class="urgency-text font-semibold">⚠️ Only 13 Seats Remaining</span> • Valued at $500+ • Completely FREE
+                    </div>
+                </div>
+                
+                <!-- Trust Indicators -->
+                <div class="flex justify-center items-center space-x-8 text-sm text-gray-500">
+                    <div class="flex items-center">
+                        <span class="text-green-500 mr-2">✓</span>
+                        No Credit Card Required
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-green-500 mr-2">✓</span>
+                        Instant Confirmation
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-green-500 mr-2">✓</span>
+                        100% Free Forever
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Bar -->
+    <section class="py-8 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <div class="flex justify-center items-center space-x-8 text-sm">
+                    <div class="flex items-center">
+                        <span class="text-2xl mr-2">🏆</span>
+                        <span>500+ Global Leaders Registered</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-2xl mr-2">⭐</span>
+                        <span>4.9/5 Average Rating</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-2xl mr-2">💼</span>
+                        <span>Fortune 500 Companies Attending</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <section class="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">
+                    The <span class="gradient-text">AI Revolution</span> is Here
+                </h2>
+                <p class="text-xl text-gray-400 max-w-4xl mx-auto mb-8">
+                    Artificial Intelligence is no longer a niche technology; it is the fundamental force reshaping the global economic landscape. The question for every leader is no longer if you will adopt AI, but how you will harness it to create a competitive advantage.
+                </p>
+                <p class="text-lg text-gray-300 max-w-4xl mx-auto">
+                    Convened by internationally renowned entrepreneur and philanthropist Dr. Stephen Akintayo, this conference is meticulously designed to bridge the critical gap between theoretical AI concepts and real-world, profitable business application. We move beyond the hype to deliver a concentrated learning experience focused on ROI, scalability, and ethical integration.
+                </p>
+            </div>
+            
+            <div class="text-center mb-16">
+                <h3 class="font-display text-3xl md:text-4xl font-bold mb-8">
+                    AI IS RESHAPING COUNTLESS SECTORS: <span class="gradient-text">WILL YOURS BE AMONG?</span>
+                </h3>
+            </div>
+            
+            <!-- Industry Sectors Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <div class="card-hover bg-gray-800 rounded-lg p-6">
+                    <h4 class="text-xl font-semibold mb-3 text-yellow-400">Real Estate</h4>
+                    <p class="text-gray-300 text-sm">This industry, centered on property transactions, valuation, and management, is being transformed by AI through intelligent algorithms that analyze market data to provide accurate, real-time property valuations and automate the matching of tenants and buyers with ideal properties, significantly enhancing customer experience and operational efficiency.</p>
+                </div>
+                
+                <div class="card-hover bg-gray-800 rounded-lg p-6">
+                    <h4 class="text-xl font-semibold mb-3 text-yellow-400">FinTech</h4>
+                    <p class="text-gray-300 text-sm">This dynamic sector, which focuses on disrupting traditional financial services through technology, is fundamentally powered by AI, which enables real-time detection of fraudulent transactions with superior accuracy, delivers personalized financial advice and product recommendations through chatbots and robo-advisors, and automates complex credit risk assessments to expand financial inclusion.</p>
+                </div>
+                
+                <div class="card-hover bg-gray-800 rounded-lg p-6">
+                    <h4 class="text-xl font-semibold mb-3 text-yellow-400">Healthcare</h4>
+                    <p class="text-gray-300 text-sm">This industry is dedicated to the diagnosis, treatment, and prevention of diseases, and it stands to be revolutionized by AI through the analysis of medical images like X-rays and MRIs for earlier and more accurate detection of conditions, as well as by accelerating the drug discovery process by analyzing vast molecular datasets.</p>
+                </div>
+                
+                <div class="card-hover bg-gray-800 rounded-lg p-6">
+                    <h4 class="text-xl font-semibold mb-3 text-yellow-400">Finance & Banking</h4>
+                    <p class="text-gray-300 text-sm">This sector manages monetary transactions, lending, and investments, and it is already being transformed by AI through the use of sophisticated algorithms that can detect fraudulent transactions in real-time and assess creditworthiness with a level of speed and accuracy far beyond traditional methods.</p>
+                </div>
+                
+                <div class="card-hover bg-gray-800 rounded-lg p-6">
+                    <h4 class="text-xl font-semibold mb-3 text-yellow-400">Manufacturing</h4>
+                    <p class="text-gray-300 text-sm">This industry focuses on the large-scale production of goods, and it can achieve remarkable gains in efficiency through AI-powered predictive maintenance, which forecasts equipment failures before they happen, and by optimizing complex supply chains to reduce waste and delays.</p>
+                </div>
+                
+                <div class="card-hover bg-gray-800 rounded-lg p-6">
+                    <h4 class="text-xl font-semibold mb-3 text-yellow-400">Retail & E-commerce</h4>
+                    <p class="text-gray-300 text-sm">This field involves the sale of products to consumers, and it benefits from AI through hyper-personalized shopping experiences where recommendation engines suggest products, and through intelligent inventory management systems that predict demand fluctuations to ensure optimal stock levels.</p>
+                </div>
+                
+                <div class="card-hover bg-gray-800 rounded-lg p-6">
+                    <h4 class="text-xl font-semibold mb-3 text-yellow-400">Agriculture</h4>
+                    <p class="text-gray-300 text-sm">This foundational sector is responsible for food production, and it can leverage AI to move towards precision farming, using drones and satellite imagery to monitor crop health and automatically optimizing the distribution of water and fertilizers to maximize yield and sustainability.</p>
+                </div>
+                
+                <div class="card-hover bg-gray-800 rounded-lg p-6">
+                    <h4 class="text-xl font-semibold mb-3 text-yellow-400">Transportation & Logistics</h4>
+                    <p class="text-gray-300 text-sm">This industry is the backbone of global trade, moving people and goods, and AI is crucial for optimizing delivery routes in real-time to save fuel and time, while also serving as the core technology in the development of autonomous vehicles for safer and more efficient transportation.</p>
+                </div>
+                
+                <div class="card-hover bg-gray-800 rounded-lg p-6">
+                    <h4 class="text-xl font-semibold mb-3 text-yellow-400">Energy</h4>
+                    <p class="text-gray-300 text-sm">This sector manages the generation and distribution of power, and AI can significantly enhance its stability and efficiency by forecasting energy demand to better balance the electrical grid and by managing the integration of variable renewable sources like solar and wind power.</p>
+                </div>
+                
+                <div class="card-hover bg-gray-800 rounded-lg p-6">
+                    <h4 class="text-xl font-semibold mb-3 text-yellow-400">Education</h4>
+                    <p class="text-gray-300 text-sm">This industry facilitates learning and skill development, and AI can create more effective, personalized educational paths for students through adaptive learning platforms that adjust content and pacing to individual needs, thereby improving engagement and outcomes.</p>
+                </div>
+                
+                <div class="card-hover bg-gray-800 rounded-lg p-6">
+                    <h4 class="text-xl font-semibold mb-3 text-yellow-400">Insurance</h4>
+                    <p class="text-gray-300 text-sm">This industry provides financial risk management, and it is among those that are sure to benefit from AI through the automation of complex claims processing, leading to faster payouts, and through more sophisticated risk modeling that allows for highly accurate and personalized policy pricing.</p>
+                </div>
+                
+                <div class="card-hover bg-gray-800 rounded-lg p-6">
+                    <h4 class="text-xl font-semibold mb-3 text-yellow-400">Media & Entertainment</h4>
+                    <p class="text-gray-300 text-sm">This creative industry produces and distributes content, and AI is already enhancing it by powering recommendation algorithms on platforms like Netflix and Spotify to keep users engaged, and by assisting in the creation of visual effects and even generating initial drafts of creative content.</p>
+                </div>
+            </div>
+            
+            <!-- Benefits Section -->
+            <div class="text-center mb-12">
+                <h3 class="font-display text-3xl md:text-4xl font-bold mb-8">
+                    At This <span class="gradient-text">Landmark Event</span>, You Will:
+                </h3>
+            </div>
+            
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+                <div class="card-hover bg-gray-800 rounded-lg p-8">
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <span class="text-xl">🎯</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 text-yellow-400">Acquire Actionable Frameworks</h4>
+                            <p class="text-gray-300">Move beyond concepts with step-by-step strategies for integrating AI into your operations, marketing, and product development. Leave with a personalized plan to drive efficiency and innovation from day one.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-gray-800 rounded-lg p-8">
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <span class="text-xl">🔮</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 text-blue-400">Gain Exclusive, Forward-Looking Insights</h4>
+                            <p class="text-gray-300">Hear from the minds at the forefront of AI development. Our speakers will share proprietary data, case studies, and predictions on the next wave of AI that you won't find anywhere else.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-gray-800 rounded-lg p-8">
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <span class="text-xl">🤝</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 text-green-400">Forge Powerful, High-Level Connections</h4>
+                            <p class="text-gray-300">Engage in dedicated networking sessions with a curated audience of global business leaders, top-tier investors, and innovative disruptors. Build relationships that will define the future of your ventures.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-gray-800 rounded-lg p-8">
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <span class="text-xl">🚀</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 text-purple-400">Future-Proof Your Organization and Career</h4>
+                            <p class="text-gray-300">Understand the long-term implications of AI on the job market and industry structures. Learn how to pivot your skills and your business model to not just survive, but to thrive in the new economy.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-gray-800 rounded-lg p-8 md:col-span-2 lg:col-span-2">
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <span class="text-xl">💎</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 text-red-400">Experience Unparalleled Value at Zero Cost</h4>
+                            <p class="text-gray-300">Through the generous sponsorship of the Stephen Akintayo Foundation, we are providing a world-class conference experience which is valued at over $500 completely FREE. This is an investment in your potential.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ROI Calculator -->
+            <div class="mt-16 text-center">
+                <div class="bg-gradient-to-r from-yellow-600 to-yellow-500 text-black rounded-lg p-8 max-w-2xl mx-auto">
+                    <h3 class="text-2xl font-bold mb-4">Expected ROI from Attending</h3>
+                    <div class="grid md:grid-cols-3 gap-6 text-center">
+                        <div>
+                            <div class="text-3xl font-bold">300%</div>
+                            <div class="text-sm">Average ROI</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold">$50K+</div>
+                            <div class="text-sm">Potential Savings</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold">10x</div>
+                            <div class="text-sm">Efficiency Gain</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speaker Showcase -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">
+                    Learn from <span class="gradient-text">AI Legends</span>
+                </h2>
+                <p class="text-xl text-gray-400">Minds that shaped the AI revolution share exclusive insights</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="speaker-card rounded-lg p-6 text-center">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/img.freepik.com/0abf9169fe877c83cad9305f51061d8023eaff03.jpg" alt="Dr. Stephen Akintayo" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Dr. Stephen Akintayo</h3>
+                    <p class="text-gray-400 mb-4">Conference Convener</p>
+                    <p class="text-sm text-gray-500">Internationally renowned entrepreneur and philanthropist bridging the gap between AI concepts and real-world business applications.</p>
+                    <div class="mt-4 flex justify-center space-x-2">
+                        <span class="bg-blue-600 text-xs px-2 py-1 rounded">Forbes 30U30</span>
+                        <span class="bg-green-600 text-xs px-2 py-1 rounded">Tech Pioneer</span>
+                    </div>
+                </div>
+                
+                <div class="speaker-card rounded-lg p-6 text-center">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/images.squarespace-cdn.com/815b28fc062dcf07ecf552479d6fad3bff1c1341.jpeg" alt="AI Industry Leader" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Industry Leader</h3>
+                    <p class="text-gray-400 mb-4">AI Development Expert</p>
+                    <p class="text-sm text-gray-500">Leading expert in AI implementation and strategy with proven track record in enterprise transformation.</p>
+                    <div class="mt-4 flex justify-center space-x-2">
+                        <span class="bg-purple-600 text-xs px-2 py-1 rounded">Ex-Google</span>
+                        <span class="bg-red-600 text-xs px-2 py-1 rounded">Stanford PhD</span>
+                    </div>
+                </div>
+                
+                <div class="speaker-card rounded-lg p-6 text-center">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/imgv3.fotor.com/9632aecea5efe70245b09b55c9d6fe4dfdc265b1.jpg" alt="Tech Innovator" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Tech Innovator</h3>
+                    <p class="text-gray-400 mb-4">AI Research Pioneer</p>
+                    <p class="text-sm text-gray-500">Pioneering researcher sharing exclusive insights on the next wave of AI development and applications.</p>
+                    <div class="mt-4 flex justify-center space-x-2">
+                        <span class="bg-indigo-600 text-xs px-2 py-1 rounded">MIT Research</span>
+                        <span class="bg-yellow-600 text-xs px-2 py-1 rounded">AI Pioneer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials with Impact Numbers -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">
+                    What <span class="gradient-text">Leaders</span> Say
+                </h2>
+                <p class="text-xl text-gray-400">Real results from real executives</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="testimonial-card rounded-lg p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="https://kimi-web-img.moonshot.cn/img/oxford-review.com/87d78c387bbf1199c6d60d743ebc7c90d841eb36.jpg" alt="Stella Anderson" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg">Stella Anderson</h4>
+                            <p class="text-sm text-gray-400">CEO, TechVision Corp</p>
+                            <div class="flex text-yellow-500 text-sm mt-1">
+                                ⭐⭐⭐⭐⭐ <span class="ml-2 text-gray-400">4.9/5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic text-lg mb-4">"Attending Dr. Akintayo's AI Conference transformed how we implement technology in our organization. The practical insights were invaluable." - Stella Anderson</p>
+                    <div class="bg-green-900 bg-opacity-30 rounded p-3 text-sm">
+                        <strong>Result:</strong> Increased operational efficiency by 40% within 3 months
+                    </div>
+                </div>
+                
+                <div class="testimonial-card rounded-lg p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="https://kimi-web-img.moonshot.cn/img/media.istockphoto.com/7853a9e7b13ab187466aef16a3206e24e6a95a81.jpg" alt="Femi Alani" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg">Femi Alani</h4>
+                            <p class="text-sm text-gray-400">CTO, InnovateLabs</p>
+                            <div class="flex text-yellow-500 text-sm mt-1">
+                                ⭐⭐⭐⭐⭐ <span class="ml-2 text-gray-400">5.0/5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic text-lg mb-4">"Dr. Stephen is a very practical teacher with a hands on deck team and I gained invaluable insights at the last one. I will surely attend the next one." - Femi Alani</p>
+                    <div class="bg-green-900 bg-opacity-30 rounded p-3 text-sm">
+                        <strong>Result:</strong> Launched 3 successful AI products worth $2M+ revenue
+                    </div>
+                </div>
+            </div>
+            
+            <!-- More Testimonials Link -->
+            <div class="text-center mt-12">
+                <button onclick="showMoreTestimonials()" class="text-yellow-500 hover:text-yellow-400 font-semibold">
+                    See 50+ More Success Stories →
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section id="registration" class="py-20 bg-gradient-to-b from-black to-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">
+                        Secure Your <span class="gradient-text">Complimentary</span> Ticket and Shape Your Future
+                    </h2>
+                    
+                    <!-- Urgency Elements -->
+                    <div class="mb-8">
+                        <div class="bg-red-600 text-white px-6 py-4 rounded-lg inline-block mb-4">
+                            <div class="text-2xl font-bold">⏰ URGENT: Only 13 Seats Remaining!</div>
+                            <div class="text-sm">Free ticket offer expires in <span class="urgency-text font-bold">2 hours 47 minutes</span></div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-xl text-gray-400">Register Today to Ensure Your Place Amongst Global Innovators • Why Wait? Seating is strictly limited to maintain an intimate and high-engagement environment • We anticipate high demand for this exclusive event</p>
+                </div>
+                
+                <div class="bg-gray-900 rounded-lg p-8 border-2 border-yellow-500 relative">
+                    <!-- Scarcity Indicator -->
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-4 py-2 rounded-full text-sm font-bold">
+                        🔥 97% Claimed - Almost Full!
+                    </div>
+                    
+                    <!-- Progress Bar -->
+                    <div class="mb-8">
+                        <div class="flex justify-between text-sm text-gray-400 mb-2">
+                            <span>Step <span id="currentStep">1</span> of 4</span>
+                            <span id="progressPercent">25%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="progress-bar h-2 rounded-full transition-all duration-300" id="progressBar" style="width: 25%"></div>
+                        </div>
+                    </div>
+                    
+                    <form id="registrationForm">
+                        <!-- Step 1: Basic Info -->
+                        <div class="form-step active" id="step1">
+                            <h3 class="text-2xl font-semibold mb-6">🚀 Quick Registration (30 seconds)</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Full Name *</label>
+                                    <input type="text" name="fullName" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent" placeholder="Enter your full name">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Email Address *</label>
+                                    <input type="email" name="email" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent" placeholder="your@email.com">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Company Name</label>
+                                    <input type="text" name="company" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent" placeholder="Your company (optional)">
+                                </div>
+                            </div>
+                            
+                            <!-- Quick Benefits -->
+                            <div class="mt-6 p-4 bg-green-900 bg-opacity-30 rounded-lg">
+                                <div class="text-sm text-green-400">
+                                    <div class="flex items-center mb-2">
+                                        <span class="mr-2">✅</span>
+                                        <span>Instant access confirmation</span>
+                                    </div>
+                                    <div class="flex items-center mb-2">
+                                        <span class="mr-2">✅</span>
+                                        <span>Free networking toolkit included</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span class="mr-2">✅</span>
+                                        <span>Exclusive post-event resources</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="button" onclick="nextStep()" class="btn-primary text-black px-8 py-4 rounded-lg font-bold mt-6 w-full text-lg">
+                                Continue to Step 2 →
+                            </button>
+                        </div>
+                        
+                        <!-- Step 2: Professional Details -->
+                        <div class="form-step" id="step2">
+                            <h3 class="text-2xl font-semibold mb-6">💼 Professional Details</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Job Title *</label>
+                                    <input type="text" name="jobTitle" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent" placeholder="e.g., CEO, CTO, Director">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Industry *</label>
+                                    <select name="industry" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+                                        <option value="">Select your industry</option>
+                                        <option value="technology">Technology</option>
+                                        <option value="finance">Finance & Banking</option>
+                                        <option value="healthcare">Healthcare</option>
+                                        <option value="manufacturing">Manufacturing</option>
+                                        <option value="retail">Retail & E-commerce</option>
+                                        <option value="consulting">Consulting</option>
+                                        <option value="education">Education</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Company Size</label>
+                                    <select name="companySize" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+                                        <option value="">Select company size</option>
+                                        <option value="startup">Startup (1-10 employees)</option>
+                                        <option value="small">Small (11-50 employees)</option>
+                                        <option value="medium">Medium (51-200 employees)</option>
+                                        <option value="large">Large (201-1000 employees)</option>
+                                        <option value="enterprise">Enterprise (1000+ employees)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- Industry Insights -->
+                            <div class="mt-6 p-4 bg-blue-900 bg-opacity-30 rounded-lg">
+                                <div class="text-sm text-blue-400">
+                                    <div class="font-semibold mb-2">🎯 Tailored for Your Industry:</div>
+                                    <div id="industryInsight">Get industry-specific AI strategies and case studies</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex space-x-4 mt-6">
+                                <button type="button" onclick="prevStep()" class="bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold flex-1">
+                                    ← Back
+                                </button>
+                                <button type="button" onclick="nextStep()" class="btn-primary text-black px-6 py-3 rounded-lg font-semibold flex-1">
+                                    Continue →
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: AI Experience -->
+                        <div class="form-step" id="step3">
+                            <h3 class="text-2xl font-semibold mb-6">🧠 AI Experience & Goals</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Current AI Experience Level *</label>
+                                    <select name="aiExperience" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+                                        <option value="">Select your experience level</option>
+                                        <option value="beginner">Beginner - Just getting started with AI</option>
+                                        <option value="intermediate">Intermediate - Some AI implementation experience</option>
+                                        <option value="advanced">Advanced - Significant AI expertise</option>
+                                        <option value="expert">Expert - AI industry professional</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Primary AI Interest Areas</label>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" name="interests" value="business-strategy" class="mr-2">
+                                            <span>AI Business Strategy & Implementation</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" name="interests" value="automation" class="mr-2">
+                                            <span>Process Automation & Efficiency</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" name="interests" value="data-analytics" class="mr-2">
+                                            <span>Data Analytics & Insights</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" name="interests" value="customer-experience" class="mr-2">
+                                            <span>Customer Experience Enhancement</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" name="interests" value="future-trends" class="mr-2">
+                                            <span>Future AI Trends & Predictions</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Personalized Benefits -->
+                            <div class="mt-6 p-4 bg-purple-900 bg-opacity-30 rounded-lg">
+                                <div class="text-sm text-purple-400">
+                                    <div class="font-semibold mb-2">🎯 Personalized Learning Path:</div>
+                                    <div>We'll customize your conference experience based on your selections</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex space-x-4 mt-6">
+                                <button type="button" onclick="prevStep()" class="bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold flex-1">
+                                    ← Back
+                                </button>
+                                <button type="button" onclick="nextStep()" class="btn-primary text-black px-6 py-3 rounded-lg font-semibold flex-1">
+                                    Final Step →
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 4: Confirmation -->
+                        <div class="form-step" id="step4">
+                            <div class="text-center">
+                                <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <span class="text-3xl">🎉</span>
+                                </div>
+                                <h3 class="text-3xl font-bold mb-4">Welcome to the AI Revolution!</h3>
+                                <p class="text-gray-400 mb-8 text-lg">Your complimentary ticket is confirmed. Here's what happens next:</p>
+                                
+                                <div class="bg-gray-800 rounded-lg p-6 mb-8 text-left">
+                                    <h4 class="font-semibold mb-4 text-lg">🎫 Your Event Access:</h4>
+                                    <div class="space-y-3 text-sm">
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-400">Date:</span>
+                                            <span class="font-semibold">October 25, 2025</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-400">Location:</span>
+                                            <span class="font-semibold">London, UK</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-400">Ticket Value:</span>
+                                            <span class="text-green-400 font-bold">FREE (Valued at $500+)</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-400">Registration ID:</span>
+                                            <span class="font-mono text-yellow-500">#AI2025-<span id="registrationId">0000</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Next Steps -->
+                                <div class="grid md:grid-cols-2 gap-4 mb-8">
+                                    <button onclick="addToCalendar()" class="w-full bg-blue-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-left">
+                                        📅 Add to Calendar
+                                        <div class="text-sm opacity-80">Never miss this opportunity</div>
+                                    </button>
+                                    <button onclick="shareEvent()" class="w-full bg-purple-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-purple-700 transition-colors text-left">
+                                        🔗 Share with Network
+                                        <div class="text-sm opacity-80">Help colleagues succeed</div>
+                                    </button>
+                                </div>
+                                
+                                <!-- Exclusive Bonus -->
+                                <div class="bg-yellow-900 bg-opacity-30 rounded-lg p-6 mb-8">
+                                    <h4 class="font-semibold mb-3 text-yellow-400">🎁 Exclusive Bonus Unlocked!</h4>
+                                    <p class="text-sm text-yellow-200">As an early registrant, you'll receive our exclusive "AI Implementation Playbook" (worth $97) absolutely FREE!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsor Section -->
+    <section class="py-16 bg-gray-900">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="font-display text-3xl md:text-4xl font-bold mb-8">
+                <span class="gradient-text">PROUDLY SPONSORED BY</span>
+            </h2>
+            <div class="bg-gray-800 rounded-lg p-8 max-w-4xl mx-auto">
+                <h3 class="text-2xl font-bold mb-4 text-yellow-400">The Stephen Akintayo Foundation</h3>
+                <p class="text-lg text-gray-300 mb-6">
+                    Driven by a mandate to empower millions through education, entrepreneurship, and strategic philanthropy, the Foundation is committed to democratizing access to world-changing knowledge. This conference is a testament to our belief in building an inclusive future where everyone has the tools to succeed.
+                </p>
+                <div class="text-sm text-gray-400">
+                    Don't miss this opportunity to gain a decisive edge in the age of AI.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="py-12 bg-black">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-6 text-yellow-400">FOR SUPPORT & GENERAL INQUIRIES</h3>
+            <p class="text-gray-300 mb-6">Our team is here to assist you with any questions regarding registration, the agenda, or partnership opportunities.</p>
+            <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                <div class="bg-gray-800 rounded-lg p-6">
+                    <h4 class="font-semibold mb-2 text-yellow-400">Email</h4>
+                    <p class="text-gray-300">products@stephenakintayo.com</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6">
+                    <h4 class="font-semibold mb-2 text-yellow-400">Phone</h4>
+                    <p class="text-gray-300">+1 (832) 941-8952</p>
+                    <p class="text-gray-300">+234 816 790 1719</p>
+                </div>
+            </div>
+            <div class="mt-8">
+                <p class="text-gray-400">
+                    Visit the official conference website for the latest updates: 
+                    <a href="https://aiconferenceworldwide.com" class="text-yellow-400 hover:text-yellow-300 underline">aiconferenceworldwide.com</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-red-900 to-red-700">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+                Last Chance: Only <span class="text-yellow-400">13 Seats</span> Remaining!
+            </h2>
+            <p class="text-xl mb-8 text-red-100">
+                Don't let this opportunity pass. Join 500+ global leaders in shaping the AI future.
+            </p>
+            <button onclick="scrollToRegistration()" class="btn-urgent text-white px-10 py-5 rounded-full text-xl font-bold hover:scale-105 transition-all duration-300">
+                🚨 Claim My FREE Ticket NOW!
+            </button>
+        </div>
+    </section>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-700 z-50">
+        <div class="flex justify-around py-2">
+            <button onclick="scrollToTop()" class="flex flex-col items-center py-2 px-4 text-gray-400 hover:text-yellow-500 transition-colors">
+                <span class="text-xs">Home</span>
+            </button>
+            <button onclick="scrollToSpeakers()" class="flex flex-col items-center py-2 px-4 text-gray-400 hover:text-yellow-500 transition-colors">
+                <span class="text-xs">Speakers</span>
+            </button>
+            <button onclick="scrollToRegistration()" class="flex flex-col items-center py-2 px-4 text-yellow-500 font-semibold relative">
+                <span class="text-xs">Register</span>
+                <div class="urgency-indicator">13</div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Add bottom padding to prevent content being hidden behind nav -->
+    <div class="h-16"></div>
+
+    <script src="main.js"></script>
+</body>
+</html>
