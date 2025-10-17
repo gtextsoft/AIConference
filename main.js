@@ -21,7 +21,7 @@ let exitIntentShown = false;
 
 // Enhanced Countdown Timer with Urgency
 function initializeCountdown() {
-    const eventDate = new Date('2025-10-25T09:00:00').getTime();
+    const eventDate = new Date('2025-10-26T16:00:00').getTime();
     const flashSaleEnd = new Date().getTime() + (2 * 60 * 60 * 1000) + (47 * 60 * 1000); // 2 hours 47 minutes from now
     
     function updateCountdown() {
@@ -549,10 +549,10 @@ function scrollToSpeakers() {
 
 // Enhanced Calendar Integration
 function addToCalendar() {
-    const eventDetails = {
+            const eventDetails = {
         title: 'AI Conference London 2025 - FREE Access',
-        start: '2025-10-25T09:00:00',
-        end: '2025-10-25T18:00:00',
+        start: '2025-10-26T16:00:00',
+        end: '2025-10-26T18:00:00',
         description: 'Exclusive free AI conference featuring Dr. Stephen Akintayo and industry leaders. Registration ID: #AI2025-' + (Math.floor(Math.random() * 9000) + 1000),
         location: 'London, UK'
     };
